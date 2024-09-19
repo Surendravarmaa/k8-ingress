@@ -47,7 +47,7 @@ metadata:
     alb.ingress.kubernetes.io/group.name: surendravarmaa
 spec:
   rules:
-  - host: "app1.surendra.onlinw"
+  - host: "app1.surendra.online"
     http:
       paths:
       - pathType: Prefix
