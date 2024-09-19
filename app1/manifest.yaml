@@ -47,6 +47,7 @@ metadata:
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
     alb.ingress.kubernetes.io/group.name: surendravarmaa
 spec:
+  ingressClassName: alb
   rules:
   - host: "app1.surendra.online"
     http:
