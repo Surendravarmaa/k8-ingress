@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: nginx
+  name: app1
 spec:
   selector:
     app: app1
@@ -35,3 +35,25 @@ spec:
   - protocol: TCP
     port: 80 #service-port
     targetPort: 80 #target-port
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-wildcard-host
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+    alb.ingress.kubernetes.io/group.name: surendravarmaa
+spec:
+  rules:
+  - host: "app1.surendra.onlinw"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/bar"
+        backend:
+          service:
+            name: app1
+            port:
+              number: 80
