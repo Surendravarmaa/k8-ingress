@@ -7,7 +7,6 @@ metadata:
     app: app1
     purpose: ingress
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: app1
@@ -48,13 +47,13 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: "app1.surendra.online"
+  - host: "app1.surendra.online" #ALB Rule
     http:
       paths:
       - pathType: Prefix
-        path: "/bar"
+        path: "/"
         backend:
           service:
-            name: app1
+            name: app1 # ALB Target group
             port:
               number: 80
